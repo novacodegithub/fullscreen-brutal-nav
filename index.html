@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Fullscreen Brutal Navigation</title>
+   <link rel="stylesheet" href="stylesheet.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.3.0/gsap.min.js"></script>
+</head>
+<body>
+   <div class="header">
+      <h1>Bob</h1>
+   </div>
+
+   <div class="nav-icon">
+      <div class="bar bar_1"></div>
+      <div class="bar bar_2"></div>
+   </div>
+
+   <div class="nav">
+      <li><a href="index.html">Bob Brown</a></li>
+      <li><a href="#">Facebook</a></li>
+      <li><a href="#">(209)200-7563 <br> bob@bobbrown.com</a></li>
+   </div>
+   <div class="nav-container">
+      <div class="nav-header">
+         <h1>Bob</h1>
+      </div>
+      <div class="nav-items">
+         <li>Personal</li>
+         <li>Professional</li>
+         <li>Video</li>
+         <li>About me</li>
+      </div>
+      <div class="rights"><p>© 2021 All Rights Reserved</p></div>
+   </div>
+   <script>
+      var t1 = new TimelineMax({paused: true});
+
+      t1.to(".nav-icon > .bar_1", 0.2, {
+         rotation: 45,
+         ease: Expo.Power1
+      });
+
+      t1.to(".nav-icon > .bar_2", 0.2, {
+         rotation: -45,
+         ease: Expo.Power1,
+         delay: -0.2
+      });
+
+      t1.to(".nav-container", 0.3, {
+         opacity: 1,
+         ease: Expo.Power1,
+         delay: -0.2
+      });
+
+      t1.staggerTo(".nav li", 0.2, {
+         opacity: 1,
+         ease: Expo.Power1,
+         delay: -0.2
+      }, 0.08);
+
+      t1.staggerTo(".nav-items > li", 0.2, {
+         opacity: 1,
+         ease: Expo.Power1,
+         delay: 0.05
+      }, 0.08);
+
+      t1.to(".rights", 0.3, {
+         opacity: 1,
+         ease: Expo.Power1,
+         delay: -0.1
+      });
+
+      t1.to(".nav-header", 0.3, {
+         opacity: 1,
+         ease: Expo.Power1,
+         delay: -0.5
+      });
+
+      t1.reverse();
+      $(document).on("click", ".nav-icon", function() {
+         t1.reversed(!t1.reversed());
+      });
+   </script>
+</body>
+</html>
